@@ -1,0 +1,38 @@
+﻿@model List<MemberGetVM>
+<div class="container">
+	<div class="row">
+        <div class="row">
+            <a asp-action="Create" asp-controller="Member" class="btn btn-success">Create</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">CategoryName</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var member in Model)
+                {
+                    <tr>
+                        <th scope="row">@member.Id</th>
+                        <td>@member.Name</td>
+                        <td>
+                            <img src=~/assets/img/@member.ImagePath alt="Alternate Text" />
+                            </td>
+                        <td>@member.CategoryName</td>
+                        <td>
+                            <a asp-action="Update" asp-controller="Member" asp-route-id="@member.Id" class="btn btn-warning">Update</a>
+                            <a asp-action="Delete" asp-controller="Member" asp-route-id="@member.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                  
+                }
+
+            </tbody>
+        </table>
+	</div>
+</div>
