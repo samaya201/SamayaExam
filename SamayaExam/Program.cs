@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using SamayaExam.Context;
+
 namespace SamayaExam
 {
     public class Program
@@ -8,6 +11,10 @@ namespace SamayaExam
 
       
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+            });
 
             var app = builder.Build();
 
